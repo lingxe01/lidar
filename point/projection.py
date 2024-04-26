@@ -8,16 +8,17 @@ import open3d as o3d
 from ultralytics import YOLO
 import shutil
 def yolo_txt(path,name):
+
     model = YOLO("yolov5m.pt")
-    model.predict(path=f'{path}/{name}/{name}.png',save=True,name=f'{path}/{name}/save',save_txt=True,conf=0.6)
+    model.predict(source=f'{path}/{name}/{name}.png',save=True,name=f'{path}/{name}/save',save_txt=True,conf=0.6,exist_ok=True)
 
 def projection(path,name):
-    path = 'D:\lidar\point\\000008'
-    name = '000008'
+    # path = 'D:\lidar\point\\000008'
+    # name = '000008'
     # yolo_txt(name,path)
     # 读取原始点云数据
     # name = '000008'
-    binary = f'{path}/{name}.bin'
+    binary = f'{path}/{name}/{name}.bin'
     scan = np.fromfile(binary, dtype=np.float32).reshape((-1, 4))
     original_pts = scan[:, :3]  # 提取 (x, y, z) 坐标
     original_pts = np.array(original_pts)[original_pts[:, 0] > 0]
@@ -28,7 +29,7 @@ def projection(path,name):
     o3d.visualization.draw_geometries([pcd_selected])
 
     # 读取相机参数
-    with open(f'{path}/{name}.txt','r') as f:
+    with open(f'{path}/{name}/{name}.txt','r') as f:
         calib = f.readlines()
 
     # P2 (3 x 4) for left eye
@@ -40,12 +41,12 @@ def projection(path,name):
     Tr_velo_to_cam = np.insert(Tr_velo_to_cam, 3, values=[0, 0, 0, 1], axis=0)
 
     # 读取图像尺寸
-    img_path = f'{path}/save/{name}.png'
+    img_path = f'{path}/{name}/save/{name}.png'
     img = mpimg.imread(img_path)
     IMG_H, IMG_W, _ = img.shape
 
     # 读取检测框信息
-    with open(f'{path}/save/labels/{name}.txt', 'r') as f:
+    with open(f'{path}/{name}/save/labels/{name}.txt', 'r') as f:
         detections = [line.strip().split() for line in f.readlines()]
 
     detections = [[float(x) for x in det] for det in detections]
@@ -84,3 +85,7 @@ def projection(path,name):
     plt.title(f'Projected Point Cloud on {name}_detect.png')
     plt.savefig(f'{path}/{name}_projection_detect_filter.png',bbox_inches='tight')
     plt.show()
+
+if __name__=='__main__':
+    # yolo_txt('D:\lidar\point','000008')
+    projection('D:\lidar\point','000008')

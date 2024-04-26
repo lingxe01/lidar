@@ -127,7 +127,7 @@ def ground_plane_segmentation(pcd, voxel_size=0.05):
 
 if __name__ == '__main__':
     # 假设KITTI bin文件是000000.bin
-    pcd = read_kitti_bin('/home/ling/mmdetection3d/data/kitti/training/velodyne/000008.bin')
+    pcd = read_kitti_bin('D:\lidar\point\\000008\\000008.bin')
     # o3d.visualization.draw_geometries([pcd])
     points = np.asarray(pcd.points)
     points_num = len(points)
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     pcd_sampled = o3d.geometry.PointCloud()
     pcd_sampled.points = o3d.utility.Vector3dVector(sample_cloud)
     ground_cloud,non_ground_cloud = ground_plane_segmentation(pcd_sampled)
-    ground_plane_segmentation(pcd)
+    # ground_plane_segmentation(pcd)
     print('点云中点的数量：',len(pcd.points))
     print('地面上的点：',len(non_ground_cloud.points))
     print('地面的点：',len(ground_cloud.points))
