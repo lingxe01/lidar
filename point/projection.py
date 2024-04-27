@@ -83,7 +83,7 @@ def projection(path,name):
     plt.imshow(img)
     plt.scatter(projected_pts[:, 0], projected_pts[:, 1], c='r', s=1)
     plt.title(f'Projected Point Cloud on {name}_detect.png')
-    plt.savefig(f'{path}/{name}_projection_detect_filter.png',bbox_inches='tight')
+    plt.savefig(f'{path}/{name}/{name}_projection_detect_filter.png',bbox_inches='tight')
     plt.show()
 
 if __name__=='__main__':

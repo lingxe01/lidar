@@ -133,11 +133,11 @@ if __name__ == '__main__':
     points_num = len(points)
     points = points.reshape([1,points_num,3])
 
-    centroids = farthest_point_sample(points,50000)
+    # centroids = farthest_point_sample(points,50000)
     # print(sample_cloud.shape)
-    sample_cloud = points[0,centroids[0].cpu().numpy()]
+    # sample_cloud = points[0,centroids[0].cpu().numpy()]
     pcd_sampled = o3d.geometry.PointCloud()
-    pcd_sampled.points = o3d.utility.Vector3dVector(sample_cloud)
+    pcd_sampled.points = o3d.utility.Vector3dVector(pcd)
     ground_cloud,non_ground_cloud = ground_plane_segmentation(pcd_sampled)
     # ground_plane_segmentation(pcd)
     print('点云中点的数量：',len(pcd.points))
