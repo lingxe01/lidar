@@ -13,13 +13,15 @@ def preprocess_point_cloud(pcd, voxel_size):
 
 
 def point_seg(bin_path,save_path):
-    pcd_combined = o3d.io.read_point_cloud("D:\lidar\point\\000008\copy_of_fragment.pcd")
+
+    pcd_Ransac = o3d.io.read_point_cloud('D:\lidar\point\\000008\\000008_Ransac.pcd')
+
     # 读取点云数据
     pcd_grond = o3d.io.read_point_cloud("D:\lidar\point\\000008\grond.pcd")
 
     pcd_nongrond= o3d.io.read_point_cloud(bin_path)
     print(len(pcd_nongrond.points))
-
+    print(len(pcd_nongrond.points))
     # 对非地面点云进行统计滤波去除噪声
     cl, ind = pcd_nongrond.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
 
@@ -30,7 +32,10 @@ def point_seg(bin_path,save_path):
     pcd_grond = preprocess_point_cloud(pcd_grond,0.2)
 
     # 给点云着色
+    # pcd_origin.paint_uniform_color([0, 1, 0])
     pcd_grond.paint_uniform_color([1, 0, 0])
+    pcd_nongrond.paint_uniform_color([0, 1, 0])
+
     # 创建一个可视化窗口
     with o3d.utility.VerbosityContextManager(
             o3d.utility.VerbosityLevel.Debug) as cm:
@@ -60,7 +65,7 @@ def point_seg(bin_path,save_path):
     # print(f"共分割出 {len(clusters)} 个簇")
 
     # 可视化彩色点云
-    # o3d.visualization.draw_geometries([pcd_nongrond])
+    # o3d.visualization.draw_geometries([pcd_nongrond,pcd_grond])
 
     o3d.io.write_point_cloud(save_path, pcd_nongrond)
 
@@ -72,12 +77,14 @@ def point_seg(bin_path,save_path):
     # 将点云添加到可视化窗口
     vis.add_geometry(pcd_nongrond)
     # vis.add_geometry(pcd_grond)
+    # vis.add_geometry(pcd_Ransac)
     # 设置渲染参数
     render_options = vis.get_render_option()
     render_options.point_size = 2
 
     # 运行可视化窗口
     vis.run()
+
     vis.destroy_window()
 
 if __name__=='__main__':

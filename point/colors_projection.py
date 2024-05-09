@@ -8,6 +8,14 @@ binary = f'D:\\lidar\\point\\000008\point_seg\\pcd_nongrond_seg.pcd'
 pcd = o3d.io.read_point_cloud(binary)
 original_colors = np.asarray(pcd.colors)
 original_pts = np.asarray(pcd.points)
+vis = o3d.visualization.Visualizer()
+
+vis.create_window()
+
+
+# 将点云添加到可视化窗口
+vis.add_geometry(pcd)
+vis.run()
 
 print("Color value range:", np.min(original_colors), np.max(original_colors))
 
@@ -70,3 +78,4 @@ plt.scatter([u],[v],c=valid_colors,alpha=0.5,s=2)
 plt.title(f'Projected Point Cloud on detect.png')
 plt.savefig(f'D:\lidar\point\\000008/000008_projection_colors_filter.png',bbox_inches='tight')
 plt.show()
+
