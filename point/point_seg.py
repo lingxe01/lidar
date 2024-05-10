@@ -20,8 +20,14 @@ def point_seg(bin_path,save_path):
     pcd_grond = o3d.io.read_point_cloud("D:\lidar\point\\000008\grond.pcd")
 
     pcd_nongrond= o3d.io.read_point_cloud(bin_path)
-    print(len(pcd_nongrond.points))
-    print(len(pcd_nongrond.points))
+    points = np.asarray(pcd_nongrond.points)
+    mask = points[:, 0] > 0
+    pcd_nongrond_points = points[mask]
+    pcd_nongrond = o3d.geometry.PointCloud()
+    pcd_nongrond.points = o3d.utility.Vector3dVector(pcd_nongrond_points)
+
+    # pcd_nonground_positive_x.paint_uniform_color([0, 0, 1])  # 给筛选出的点云着蓝色
+
     # 对非地面点云进行统计滤波去除噪声
     cl, ind = pcd_nongrond.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
 
@@ -46,6 +52,21 @@ def point_seg(bin_path,save_path):
     # 给不同簇上不同的伪彩色
     max_label = labels.max()
     print(f"点云共分为 {max_label + 1} 个簇")
+    
+    boxes = []
+    clusters = []
+    for label in np.unique(labels):
+        if label == -1:
+            continue
+        cluster_idx = np.where(labels == label)[0]
+        cluster = pcd_nongrond.select_by_index(cluster_idx)
+        clusters.append(cluster)
+        box = cluster.get_axis_aligned_bounding_box()
+        box_vol = box.volume()
+        if 2 < box_vol < 30:  # 根据需求调整体积阈值
+            box.color = (1, 0, 0)
+            boxes.append(box)
+
     colors = plt.get_cmap("tab20")(labels / (max_label if max_label > 0 else 1))
     colors[labels < 0] = 0
     pcd_nongrond.colors = o3d.utility.Vector3dVector(colors[:, :3])
@@ -79,6 +100,8 @@ def point_seg(bin_path,save_path):
     # vis.add_geometry(pcd_grond)
     # vis.add_geometry(pcd_Ransac)
     # 设置渲染参数
+    for box in boxes:
+        vis.add_geometry(box)
     render_options = vis.get_render_option()
     render_options.point_size = 2
 
