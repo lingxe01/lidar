@@ -103,7 +103,7 @@ def point_seg(bin_path,save_path):
     for box in boxes:
         vis.add_geometry(box)
     render_options = vis.get_render_option()
-    render_options.point_size = 2
+    # render_options.point_size = 2
 
     # 运行可视化窗口
     vis.run()
