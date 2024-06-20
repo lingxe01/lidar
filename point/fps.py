@@ -55,7 +55,7 @@ def random_sample(xyz, npoint):
     return sampled_points
 
 if __name__ == '__main__':
-    pcd = read_kitti_bin('/home/ling/mmdetection3d/data/kitti/training/velodyne/000008.bin')
+    pcd = read_kitti_bin('000008/000008.bin')
     o3d.visualization.draw_geometries([pcd])
     points = np.asarray(pcd.points)
     points_num = len(points)

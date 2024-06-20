@@ -15,24 +15,26 @@ def read_kitti_bin(bin_path):
     pcd.points = o3d.utility.Vector3dVector(points)
     return pcd
 
+
 def preprocess_point_cloud(pcd, voxel_size):
-    #对点云进行下采样
+    # 对点云进行下采样
     pcd_down = pcd.voxel_down_sample(voxel_size)
-    
-    #计算法向量
+
+    # 计算法向量
     pcd_down.estimate_normals()
-    
+
     return pcd_down
 
 
 def ransac_plane_segmentation(pcd, distance_threshold, ransac_n, num_iterations):
     plane_model, inliers = pcd.segment_plane(distance_threshold, ransac_n, num_iterations)
-    
+
     # 使用 Open3D 内置索引机制获取内群和离群点云
     inlier_cloud = pcd.select_by_index(inliers)
     outlier_cloud = pcd.select_by_index(inliers, invert=True)
-    
+
     return inlier_cloud, outlier_cloud
+
 
 # def region_growing_plane_segmentation(pcd, distance_threshold, curvature_threshold):
 #     # 基于法向量和曲率做区域生长,细分割地面
@@ -61,10 +63,11 @@ def ransac_plane_segmentation(pcd, distance_threshold, ransac_n, num_iterations)
 #         curvature = np.mean(curvatures)
 #         if curvature < curvature_threshold:
 #             plane_clouds.append(curr_plane)
-            
+
 #     return plane_clouds
 
-def region_growing_plane_segmentation(pcd, distance_threshold, curvature_threshold, min_cluster_size=10, max_z_range=0.5):
+def region_growing_plane_segmentation(pcd, distance_threshold, curvature_threshold, min_cluster_size=10,
+                                      max_z_range=0.5):
     # 基于法向量和曲率做区域生长,细分割地面
     outlier_cloud = pcd
     cluster_labels = np.array(outlier_cloud.cluster_dbscan(eps=distance_threshold, min_points=20, print_progress=True))
@@ -99,30 +102,31 @@ def region_growing_plane_segmentation(pcd, distance_threshold, curvature_thresho
                 plane_clouds.append(curr_plane)
     return plane_clouds
 
+
 def ground_plane_segmentation(pcd, voxel_size=0.05):
-    #预处理 - 下采样和法向量估计
+    # 预处理 - 下采样和法向量估计
     pcd_down = preprocess_point_cloud(pcd, voxel_size)
-    
-    #RANSAC粗分割
+
+    # RANSAC粗分割
     inlier_cloud, outlier_cloud = ransac_plane_segmentation(pcd_down,
-                                                           0.07, 3, 5000)
-    
-    #区域生长细分割
+                                                            0.07, 3, 5000)
+
+    # 区域生长细分割
     plane_clouds = region_growing_plane_segmentation(outlier_cloud, 0.07, 0.05)
-    
-    #合并地面点云
+
+    # 合并地面点云
     ground_cloud = inlier_cloud
     for plane in plane_clouds:
         ground_cloud += plane
-    
-    #着色显示结果
+
+    # 着色显示结果
     ground_cloud.paint_uniform_color([1.0, 0, 0])
     non_ground_cloud = outlier_cloud
     non_ground_cloud.paint_uniform_color([0, 1.0, 0])
-    
+
     o3d.visualization.draw_geometries([ground_cloud, non_ground_cloud])
     # o3d.visualization.draw_geometries([non_ground_cloud])
-    return ground_cloud,non_ground_cloud
+    return ground_cloud, non_ground_cloud
 
 
 if __name__ == '__main__':
@@ -131,15 +135,15 @@ if __name__ == '__main__':
     # o3d.visualization.draw_geometries([pcd])
     points = np.asarray(pcd.points)
     points_num = len(points)
-    points = points.reshape([1,points_num,3])
+    points = points.reshape([1, points_num, 3])
 
     # centroids = farthest_point_sample(points,50000)
     # print(sample_cloud.shape)
     # sample_cloud = points[0,centroids[0].cpu().numpy()]
     pcd_sampled = o3d.geometry.PointCloud()
     pcd_sampled.points = o3d.utility.Vector3dVector(pcd)
-    ground_cloud,non_ground_cloud = ground_plane_segmentation(pcd_sampled)
+    ground_cloud, non_ground_cloud = ground_plane_segmentation(pcd_sampled)
     # ground_plane_segmentation(pcd)
-    print('点云中点的数量：',len(pcd.points))
-    print('地面上的点：',len(non_ground_cloud.points))
-    print('地面的点：',len(ground_cloud.points))
+    print('点云中点的数量：', len(pcd.points))
+    print('地面上的点：', len(non_ground_cloud.points))
+    print('地面的点：', len(ground_cloud.points))
