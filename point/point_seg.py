@@ -14,7 +14,7 @@ def preprocess_point_cloud(pcd, voxel_size):
 
 
 def point_seg(bin_path, save_path):
-    pcd_Ransac = o3d.io.read_point_cloud('D:\lidar\point\\000008\\000008_Ransac.pcd')
+    # pcd_Ransac = o3d.io.read_point_cloud('D:\lidar\point\\000008\\000008_Ransac.pcd')
 
     # 读取点云数据
     pcd_grond = o3d.io.read_point_cloud("D:\lidar\point\\000008\grond.pcd")
@@ -26,6 +26,14 @@ def point_seg(bin_path, save_path):
     pcd_nongrond = o3d.geometry.PointCloud()
     pcd_nongrond.points = o3d.utility.Vector3dVector(pcd_nongrond_points)
 
+    vis = o3d.visualization.Visualizer()
+    # vis.create_window()
+
+    # # 将点云添加到可视化窗口
+    # vis.add_geometry(pcd_nongrond)
+    # vis.run()
+    # vis.destroy_window()
+
     # pcd_nonground_positive_x.paint_uniform_color([0, 0, 1])  # 给筛选出的点云着蓝色
 
     # 对非地面点云进行统计滤波去除噪声
@@ -33,7 +41,7 @@ def point_seg(bin_path, save_path):
 
     # 下采样
     pcd_nongrond = preprocess_point_cloud(cl, 0.2)
-    print(len(pcd_nongrond.points))
+    # print(len(pcd_nongrond.points))
 
     pcd_grond = preprocess_point_cloud(pcd_grond, 0.2)
 
@@ -89,7 +97,7 @@ def point_seg(bin_path, save_path):
 
     o3d.io.write_point_cloud(save_path, pcd_nongrond)
 
-    vis = o3d.visualization.Visualizer()
+    # vis = o3d.visualization.Visualizer()
 
     vis.create_window()
 
