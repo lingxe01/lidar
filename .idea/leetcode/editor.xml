@@ -14,6 +14,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[217]存在重复元素.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[217]存在重复元素.md" />
+              <option name="frontendQuestionId" value="leetcode.cn217" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[217]存在重复元素.py" />
+              <option name="titleSlug" value="contains-duplicate" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[21]合并两个有序链表.py">
           <value>
             <LeetcodeEditor>
@@ -22,6 +33,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[21]合并两个有序链表.py" />
               <option name="titleSlug" value="merge-two-sorted-lists" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[268]丢失的数字.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[268]丢失的数字.md" />
+              <option name="frontendQuestionId" value="leetcode.cn268" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[268]丢失的数字.py" />
+              <option name="titleSlug" value="missing-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[26]删除有序数组中的重复项.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[26]删除有序数组中的重复项.md" />
+              <option name="frontendQuestionId" value="leetcode.cn26" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[26]删除有序数组中的重复项.py" />
+              <option name="titleSlug" value="remove-duplicates-from-sorted-array" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -36,6 +69,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[326]3 的幂.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[326]3 的幂.md" />
+              <option name="frontendQuestionId" value="leetcode.cn326" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[326]3 的幂.py" />
+              <option name="titleSlug" value="power-of-three" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[35]搜索插入位置.py">
           <value>
             <LeetcodeEditor>
@@ -44,6 +88,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[35]搜索插入位置.py" />
               <option name="titleSlug" value="search-insert-position" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[509]斐波那契数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[509]斐波那契数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn509" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[509]斐波那契数.py" />
+              <option name="titleSlug" value="fibonacci-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[628]三个数的最大乘积.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[628]三个数的最大乘积.md" />
+              <option name="frontendQuestionId" value="leetcode.cn628" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[628]三个数的最大乘积.py" />
+              <option name="titleSlug" value="maximum-product-of-three-numbers" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -66,6 +132,94 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[67]二进制求和.py" />
               <option name="titleSlug" value="add-binary" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[796]旋转字符串.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[796]旋转字符串.md" />
+              <option name="frontendQuestionId" value="leetcode.cn796" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[796]旋转字符串.py" />
+              <option name="titleSlug" value="rotate-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[836]矩形重叠.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[836]矩形重叠.md" />
+              <option name="frontendQuestionId" value="leetcode.cn836" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[836]矩形重叠.py" />
+              <option name="titleSlug" value="rectangle-overlap" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[88]合并两个有序数组.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[88]合并两个有序数组.md" />
+              <option name="frontendQuestionId" value="leetcode.cn88" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[88]合并两个有序数组.py" />
+              <option name="titleSlug" value="merge-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[922]按奇偶排序数组 II.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[922]按奇偶排序数组 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn922" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[922]按奇偶排序数组 II.py" />
+              <option name="titleSlug" value="sort-array-by-parity-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 120]寻找文件副本.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[LCR 120]寻找文件副本.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 120" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 120]寻找文件副本.py" />
+              <option name="titleSlug" value="shu-zu-zhong-zhong-fu-de-shu-zi-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 126]斐波那契数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[LCR 126]斐波那契数.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 126" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 126]斐波那契数.py" />
+              <option name="titleSlug" value="fei-bo-na-qi-shu-lie-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 135]报数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[LCR 135]报数.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 135" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 135]报数.py" />
+              <option name="titleSlug" value="da-yin-cong-1dao-zui-da-de-nwei-shu-lcof" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 173]点名.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/doc/content/[LCR 173]点名.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 173" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../learn_code/leetcode/leetcode/editor/cn/[LCR 173]点名.py" />
+              <option name="titleSlug" value="que-shi-de-shu-zi-lcof" />
             </LeetcodeEditor>
           </value>
         </entry>

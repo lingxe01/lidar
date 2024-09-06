@@ -1,4 +1,5 @@
 import matplotlib.image as mpimg
+import cv2
 import numpy as np
 import open3d as o3d
 from function import *
@@ -6,8 +7,9 @@ from function import *
 calib_path = 'D:\lidar\point\\000008\\000008.txt'
 # 读取图像尺寸
 img_path = f'D:\lidar\point\\000008\save\\000008.png'
-img = mpimg.imread(img_path)
+img = cv2.imread(img_path)
 IMG_H, IMG_W, _ = img.shape
+cv2.imshow("origin image", img)
 
 P2, K, Tr_velo_to_cam, Tr, R0_rect = get_calib(calib_path)
 
@@ -50,7 +52,7 @@ fx, fy = P2[0, 0], P2[1, 1]
 cx, cy = P2[0, 2], P2[1, 2]
 
 # 远近平面
-Z_near, Z_far = 0, 5
+Z_near, Z_far = 1,9
 
 # 用于存储所有视锥线条的列表
 all_lines = []
@@ -98,14 +100,14 @@ for det in detections:
 # 使用这个函数
     bbox = [left_top[0], left_top[1], right_bottom[0], right_bottom[1]]
     z_range = [Z_near, Z_far]
-    scale_factor=1.05
+    scale_factor=1.1
     inside_frustum_indices = filter_points_in_frustum(valid_pts, P2, Tr_velo_to_cam, R0_rect, bbox, z_range, scale_factor)
 
     # 更新点云颜色
     for i in inside_frustum_indices:
         valid_colors[i] = [1, 0, 0]  # 将视锥体内的点设置为红色
     select_num+=len(inside_frustum_indices)
-    break
+    # break
 
 pcd_selected.colors = o3d.utility.Vector3dVector(valid_colors)
 
