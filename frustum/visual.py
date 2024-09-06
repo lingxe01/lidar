@@ -4,16 +4,16 @@ import numpy as np
 import open3d as o3d
 from function import *
 
-calib_path = 'D:\lidar\point\\000008\\000008.txt'
+calib_path = 'point\\000008\\000008.txt'
 # 读取图像尺寸
-img_path = f'D:\lidar\point\\000008\save\\000008.png'
+img_path = f'point\\000008\save\\000008.png'
 img = cv2.imread(img_path)
 IMG_H, IMG_W, _ = img.shape
 cv2.imshow("origin image", img)
 
 P2, K, Tr_velo_to_cam, Tr, R0_rect = get_calib(calib_path)
 
-binary = f'D:\lidar\point\\000008\point_seg\pcd_nongrond_seg.pcd'
+binary = f'point\\000008\point_seg\pcd_nongrond_seg.pcd'
 pcd = o3d.io.read_point_cloud(binary)
 original_colors = np.asarray(pcd.colors)
 original_pts = np.asarray(pcd.points)
@@ -42,7 +42,7 @@ pcd_selected.points = o3d.utility.Vector3dVector(valid_pts)
 # o3d.visualization.draw_geometries([pcd_selected])
 
 
-with open(f'D:\lidar\point\\000008\save\labels\\000008.txt', 'r') as f:
+with open(f'point\\000008\save\labels\\000008.txt', 'r') as f:
     detections = [line.strip().split() for line in f.readlines()]
 
 detections = [[float(x) for x in det] for det in detections]

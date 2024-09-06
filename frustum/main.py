@@ -3,10 +3,10 @@ import numpy as np
 import open3d as o3d
 from function import *
 
-calib_path = 'D:\lidar\point\\000008\\000008.txt'
-img_path = 'D:\lidar\point\\000008\save\\000008.png'
-binary = 'D:\lidar\point\\000008\point_seg\pcd_nongrond_seg.pcd'
-label_path = 'D:\lidar\point\\000008\save\labels\\000008.txt'
+calib_path = 'point\\000008\\000008.txt'
+img_path = 'point\\000008\save\\000008.png'
+binary = 'point\\000008\point_seg\pcd_nongrond_seg.pcd'
+label_path = 'point\\000008\save\labels\\000008.txt'
 img = mpimg.imread(img_path)
 IMG_H, IMG_W, _ = img.shape
 
