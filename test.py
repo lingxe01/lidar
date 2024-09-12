@@ -1,45 +1,16 @@
-import cv2
+import numpy as np
+# 读取相机参数
+with open(f'D:\python\lidar\point\\000008\\000008.txt', 'r') as f:
+    calib = f.readlines()
 
-# IP摄像头的URL，假设是MJPEG流
-url = "rtsp://admin:123@192.168.1.37:554/mainstream"
-# 打开视频流
-cap = cv2.VideoCapture(url)
-cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
-# 检查视频流是否成功打开
-if not cap.isOpened():
-    print("无法打开视频流")
-    exit()
+# P2 (3 x 4) for left eye
+P2 = np.array([float(x) for x in calib[2].strip('\n').split(' ')[1:]]).reshape(3, 4)
+R0_rect = np.array([float(x) for x in calib[4].strip('\n').split(' ')[1:]]).reshape(3, 3)
+R0_rect = np.insert(R0_rect, 3, values=[0, 0, 0], axis=0)
+R0_rect = np.insert(R0_rect, 3, values=[0, 0, 0, 1], axis=1)
+Tr_velo_to_cam = np.array([float(x) for x in calib[5].strip('\n').split(' ')[1:]]).reshape(3, 4)
+Tr_velo_to_cam = np.insert(Tr_velo_to_cam, 3, values=[0, 0, 0, 1], axis=0)
 
-# 设置视频捕获的缓冲区大小为0，降低延迟
-cap.set(cv2.CAP_PROP_BUFFERSIZE, 0)
-
-# 获取视频的宽度和高度
-frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-# 定义编解码器并创建 VideoWriter 对象
-output_filename = 'output.avi'
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter(output_filename, fourcc, 20.0, (frame_width, frame_height))
-
-# 循环读取和显示视频帧
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        print("无法接收帧（可能是流结束了）")
-        break
-
-    # 写入当前帧到视频文件
-    out.write(frame)
-
-    # 显示帧
-    cv2.imshow('Video Stream', frame)
-
-    # 按下 'q' 键退出循环
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# 释放视频捕捉对象和视频写入对象，并关闭所有OpenCV窗口
-cap.release()
-out.release()
-cv2.destroyAllWindows()
+print(P2)
+print(R0_rect)
+print(Tr_velo_to_cam)
