@@ -280,8 +280,8 @@ pcd_selected.points = o3d.utility.Vector3dVector(valid_pts)
 # o3d.visualization.draw_geometries([pcd_selected])
 
 
-# with open(f'point\\000008\save\labels\\000008.txt', 'r') as f:
-with open(f'frustum/000008.txt', 'r') as f:
+with open(f'D:\python\yolov5_Monocular_ranging\\runs\detect\exp8\labels\\000008.txt', 'r') as f:
+# with open(f'frustum/000008_copy.txt', 'r') as f:
     detections = [line.strip().split() for line in f.readlines()]
 
 detections = [[float(x) for x in det] for det in detections]
@@ -300,7 +300,7 @@ all_frustum_points = []
 all_planes = []
 select_num=0
 inside_points=[]
-scale_factor = 1.1
+scale_factor = 1
 for det in detections:
     category, u_center, v_center, width, height, conf,distance = det
     if distance>30 or distance<=0:

@@ -3,6 +3,13 @@ import numpy as np
 from sklearn.cluster import DBSCAN,KMeans
 import open3d as o3d
 from scipy.spatial import cKDTree
+from ultralytics import YOLO
+
+def get_yolo_result_boxes(image_path):
+    model = YOLO('yolov8n.pt')
+    results = model(image_path,save=False)
+    return results.boxes.xywhn
+
 
 def pixel_to_normalized(x, y, cx, cy, fx, fy):
     x_norm = (x - cx) / fx
@@ -14,7 +21,6 @@ def normalized_to_camera(x_norm, y_norm, Z):
     X = x_norm * Z
     Y = y_norm * Z
     return X, Y, Z
-
 
 def camera_to_lidar(X, Y, Z, Tr_velo_to_cam, R0_rect):
     camera_coords = np.array([X, Y, Z, 1.0]).reshape(4, 1)

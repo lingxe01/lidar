@@ -2,4 +2,6 @@ from ultralytics import YOLO
 
 model = YOLO('yolov8n.pt')
 
-model.predict(source="point/000008/000008.png",save=True,show=True,conf=0.6)
+results = model('point\\000008\\000008.png',show=True,save=False)
+for result in results:
+    print(result.boxes.xywhn)
